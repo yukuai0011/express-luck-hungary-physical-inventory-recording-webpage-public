@@ -14,7 +14,31 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/express-luck-hungary-physical-inventory-recording-webpage-public/">
+  <base href="/">
+  <script>
+  (function() {
+    try {
+      var base = "/";
+      if (location.protocol === "file:") {
+        base = "./";
+      } else {
+        var path = location.pathname;
+        if (!path.endsWith("/")) {
+          path = path.substring(0, path.lastIndexOf("/") + 1);
+        }
+        base = path;
+      }
+      var el = document.querySelector("base");
+      if (!el) {
+        el = document.createElement("base");
+        document.head.insertBefore(el, document.head.firstChild);
+      }
+      el.setAttribute("href", base);
+    } catch (e) {
+      console.error("Failed to set dynamic base-href:", e);
+    }
+  })();
+  </script>
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
